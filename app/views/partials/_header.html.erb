@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Ruby Blog</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+ 
+  <%= stylesheet_link_tag    "bootstrap" %>
+  <%= stylesheet_link_tag    "custom" %>
+  <%= csrf_meta_tags %>
+  
+ 
+</head>
+<body>
+<div id="fb-root"></div>
+<script>
+
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=955568174461440";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+
+
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+ <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+<div class="navbar navbar-inverse ">
+<div class="navbar-inner">
+  <div class="container">
+
+	 <ul class="nav pull-left">
+	  <li><%= link_to "Template Blog", root_path %></li>
+
+<li class="dropdown">
+    <a class="dropdown-toggle"
+       data-toggle="dropdown"
+       href="#">
+        Categories
+        <b class="caret"></b>
+      </a>
+    <ul class="dropdown-menu">
+
+				<%all_categories.each do |cat|%>
+				
+				<li>
+					<%=link_to cat.name, category_path(:id => cat.id)%>
+				</li>
+				<%end%>
+
+			</ul>
+
+</li>
+
+<li class="dropdown">
+    <a class="dropdown-toggle"
+       data-toggle="dropdown"
+       href="#">
+        BLOG ROLL
+        <b class="caret"></b>
+      </a>
+    <ul class="dropdown-menu">
+
+				<%all_posts.each do |post|%>
+				
+				<li>
+					<%=link_to post.title, post_path(:id => post.id)%>
+				</li>
+				<%end%>
+			</ul>
+	 </ul>
+</li>
+
+
+	 </ul>
+
+	 <ul class="nav pull-right nav-pills">
+
+	 <li>
+      <%=form_for @search_posts do |f|  %>
+				<%=f.text_field :title_or_body_contains ,:class => 'navbar-search pull-right'  %>
+				
+				<%end%>				
+  </li>		
+		 <li ><%= link_to "Home", root_path %></li>
+		<li ><%= link_to "Blog",posts_path %></li>
+		<li><a href="https://myshoppe-steinjin.c9.io/shoppe/login" target="_blank">Shop Admin</a></li>
+		<li ><%= link_to "About", about_path %></li>
+		
+		
+			
+
+</ul>
+
+</div>
+</div>
+</div>
+

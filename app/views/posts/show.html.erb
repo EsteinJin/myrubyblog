@@ -1,0 +1,7 @@
+<h1><%=@post.title%></h1>
+<small><%=@post.created_at.strftime("%b %d. %Y")%></small>
+<p><%= raw @post.body%></p>
+<p>Category :<%= link_to @post.category.name, category_path(:id =>@post.category.id) %></p>
+<p><%= link_to "Back", posts_path%></p>
+<%= render_shareable :buttons=> ['twitter', 'facebook', 'linkedin'] %>
+<div class="fb-comments" style="width:1000px" data-href="myrubyblog-steinjin.c9.io" data-numposts="5" data-width="1000"  data-colorscheme="light"></div>

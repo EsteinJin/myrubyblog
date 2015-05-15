@@ -1,0 +1,36 @@
+<h1><%= @category.name%></h1>
+<% if @posts.each do |post|%>
+
+
+ <article class="post post-1">
+		<header class="entry-header">
+			<h1 class="entry-title">
+				<%= link_to post.title , post%>
+			</h1>
+			<div class="entry-meta">
+				<span class="post-category"><a href="#">Category : <%= @category.name%></a></span>
+
+			
+				<span class="post-author">Posted at: <a href="#"><%= link_to time_ago_in_words(post.created_at)+ " ago" , post %> |</a></span>
+
+				
+			</div>
+		</header>
+		<div class="entry-content clearfix">
+				<p><%= post.description %></p>
+			<div class="read-more cl-effect-14">
+
+				<small class="more-link"><%= link_to "Continue reading" , post%>
+				</small>				
+			</div>
+		</div>
+	</article>
+ 
+ 
+ 
+ <%end.empty?%>
+
+<p>Sorry, there is no posts in this category</p>
+<%end%>
+
+
